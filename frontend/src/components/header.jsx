@@ -18,13 +18,13 @@ export default function Header() {
         </Link>
 
         {/* Search */}
-        <div class="max-lg:hidden flex items-center rounded-md bg-gray-50/50 pl-3 outline-none ring-1 ring-gray-200 focus:ring-primary focus-within:ring-primary">
+        <div className="max-lg:hidden flex items-center rounded-md bg-gray-50/50 pl-3 outline-none ring-1 ring-gray-200 focus:ring-primary focus-within:ring-primary">
           <Search className="size-4 stroke-primary" />
           <input
             type="text"
             name="search"
             id="search"
-            class="block min-w-96 grow py-1.5 pr-3 pl-1 text-base text-gray-700 placeholder:text-primary focus-within:placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
+            className="block min-w-96 grow py-1.5 pr-3 pl-1 text-base text-gray-700 placeholder:text-primary focus-within:placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
             placeholder="Find beauty"
             required=""
           />
@@ -44,13 +44,13 @@ export default function Header() {
       </div>
 
       {/* Mobile Search */}
-      <div class="lg:hidden mx-auto max-w-2xl flex items-center rounded-md bg-gray-50/50 pl-3 outline-none ring-1 ring-gray-200 focus:ring-primary focus-within:ring-primary mt-4">
+      <div className="lg:hidden mx-auto max-w-2xl flex items-center rounded-md bg-gray-50/50 pl-3 outline-none ring-1 ring-gray-200 focus:ring-primary focus-within:ring-primary mt-4">
         <Search className="size-4 stroke-primary" />
         <input
           type="text"
           name="search"
-          id="search"
-          class="block grow py-1.5 pr-3 pl-1 text-base text-gray-700 placeholder:text-primary focus-within:placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
+          id="mobile-search"
+          className="block grow py-1.5 pr-3 pl-1 text-base text-gray-700 placeholder:text-primary focus-within:placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
           placeholder="Find beauty"
           required=""
         />

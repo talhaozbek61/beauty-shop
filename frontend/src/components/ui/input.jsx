@@ -6,10 +6,14 @@ export default function Input({
   placeholder,
   type,
   value,
+  icon,
+  iconClass,
   className,
   onChange,
   children,
 }) {
+  const Icon = icon;
+
   return (
     <div>
       <label
@@ -18,7 +22,15 @@ export default function Input({
       >
         {children}
       </label>
-      <div className="mt-2">
+      <div className="relative mt-2">
+        {icon ? (
+          <Icon
+            className={twMerge(
+              "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400",
+              iconClass
+            )}
+          />
+        ) : null}
         <input
           id={name}
           name={name}
@@ -27,7 +39,8 @@ export default function Input({
           placeholder={placeholder}
           min={type === "number" ? 0 : ""}
           className={twMerge(
-            "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-600 sm:text-sm/6",
+            "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6",
+            icon && "pl-10",
             className
           )}
           onChange={onChange}
