@@ -2,6 +2,8 @@ import { User, Heart, ShoppingBag, Search } from "lucide-react";
 
 import Link from "./ui/link";
 
+import { categories } from "../../../shared/constants/categories";
+
 export default function Header() {
   return (
     <nav className="bg-transparent pt-6 pb-4 px-6 lg:px-8">
@@ -57,7 +59,7 @@ export default function Header() {
       </div>
 
       {/* Categories */}
-      <ul className="mx-auto max-w-2xl lg:max-w-7xl flex items-center max-lg:space-x-8 lg:justify-between py-4 overflow-x-scroll mt-4 border-t border-gray-200">
+      <ul className="mx-auto max-w-2xl lg:max-w-7xl flex items-center max-sm:space-x-8 sm:justify-between py-4 overflow-x-scroll mt-4 border-t border-gray-200">
         {categories.map((category) => (
           <li key={category.name} className="shrink-0">
             <Link href={category.href}>{category.name}</Link>
@@ -83,36 +85,5 @@ const links = [
     name: "Cart",
     href: "/cart",
     icon: ShoppingBag,
-  },
-];
-
-const categories = [
-  {
-    name: "Face",
-    href: "/account",
-  },
-  {
-    name: "Eye",
-    href: "/favorites",
-  },
-  {
-    name: "Lips",
-    href: "/cart",
-  },
-  {
-    name: "Nails",
-    href: "/cart",
-  },
-  {
-    name: "Skin Care",
-    href: "/cart",
-  },
-  {
-    name: "Accessories",
-    href: "/cart",
-  },
-  {
-    name: "Vegan",
-    href: "/cart",
   },
 ];

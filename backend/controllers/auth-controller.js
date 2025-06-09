@@ -1,5 +1,7 @@
 import bcrypt from "bcryptjs";
 
+import mongoose from "mongoose";
+
 import User from "../models/user-model.js";
 import { generateJWTToken } from "../utils/generateJWTToken.js";
 
@@ -102,6 +104,28 @@ export const checkAuth = async (req, res) => {
       .json({ success: true, user: { ...user._doc, password: undefined } });
   } catch (error) {
     console.log(`Error in Checking Auth: ${error.message}`);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
+export const updatedUser = async (req, res) => {
+  const { id } = req.params;
+  const user = req.body;
+
+  if (!id || !user.name || !user.email)
+    return res
+      .status(400)
+      .json({ success: false, message: "Please provide all fields" });
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).json({ success: false, message: "Invalid User Id" });
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(id, user, {
+      new: true,
+    });
+    res.status(200).json({ success: true, data: updatedUser });
+  } catch (error) {
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };

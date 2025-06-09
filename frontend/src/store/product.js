@@ -1,5 +1,9 @@
 import { create } from "zustand";
 
+const API_URL = "http://localhost:3000/api";
+
+import { categories } from "../../../shared/constants/categories";
+
 export const useProductStore = create((set) => ({
   products: [],
   product: [],
@@ -7,13 +11,24 @@ export const useProductStore = create((set) => ({
   createProduct: async (newProduct) => {
     if (
       !newProduct.name ||
+      !newProduct.category ||
       !newProduct.desc ||
       !newProduct.price ||
       !newProduct.image
     )
       return { success: false, message: "Please fill in all fields." };
 
-    const res = await fetch("/api/products", {
+    const allowedValues = categories.map((cat) => cat.value);
+
+    if (!allowedValues.includes(newProduct.category)) {
+      return { success: false, message: "Invalid category selected." };
+    }
+
+    if (!newProduct.userId) {
+      return { success: false, message: "Please login." };
+    }
+
+    const res = await fetch(`${API_URL}/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,20 +40,31 @@ export const useProductStore = create((set) => ({
     return { success: true, message: "Product created successfully" };
   },
   fetchProducts: async () => {
-    const res = await fetch("/api/products");
+    const res = await fetch(`${API_URL}/products`);
     const data = await res.json();
     set({ products: data.data });
   },
   fetchProductById: async (id) => {
-    const res = await fetch(`/api/products/${id}`, {
+    const res = await fetch(`${API_URL}/products/${id}`, {
       method: "GET",
     });
     const data = await res.json();
     if (!data.success) return { success: false, message: data.message };
     set({ product: data.data });
+    return { success: true };
+  },
+  fetchProductsByUserId: async (userId) => {
+    const res = await fetch(`${API_URL}/products/user/${userId}`, {
+      method: "GET",
+    });
+    const data = await res.json();
+    console.log(data);
+
+    if (!data.success) return { success: false, message: data.message };
+    set({ products: data.data });
   },
   deleteProduct: async (id) => {
-    const res = await fetch(`/api/products/${id}`, {
+    const res = await fetch(`${API_URL}/products/${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
@@ -47,7 +73,7 @@ export const useProductStore = create((set) => ({
     return { success: true, message: data.message };
   },
   updateProduct: async (id, updatedProduct) => {
-    const res = await fetch(`/api/products/${id}`, {
+    const res = await fetch(`${API_URL}/products/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

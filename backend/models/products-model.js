@@ -1,9 +1,22 @@
 import mongoose from "mongoose";
 
+import { categories } from "../../shared/constants/categories.js";
+
+const categoryValues = categories.map((c) => c.value);
+
 const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      required: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      enum: categoryValues,
       required: true,
     },
     desc: {

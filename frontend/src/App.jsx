@@ -85,7 +85,14 @@ export default function App() {
             </ProtectRoute>
           }
         />
-        <Route path="/create" element={<CreatePage />} />
+        <Route
+          path="/create"
+          element={
+            <ProtectRoute>
+              <CreatePage />
+            </ProtectRoute>
+          }
+        />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

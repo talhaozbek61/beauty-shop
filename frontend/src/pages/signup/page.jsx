@@ -49,7 +49,7 @@ export default function Page() {
       <h1 className="text-2xl font-semibold mb-6 text-center text-primary">
         Sign Up
       </h1>
-      <form className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name Input */}
         <Input
           name="name"
@@ -100,7 +100,6 @@ export default function Page() {
           type="submit"
           className="bg-primary dark:bg-gray-700 text-white w-full rounded-md"
           disabled={isLoading}
-          onClick={handleSubmit}
         >
           {isLoading ? (
             <span className="flex justify-center items-center gap-2">

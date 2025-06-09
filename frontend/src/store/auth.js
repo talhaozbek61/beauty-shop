@@ -10,6 +10,7 @@ export const useAuthStore = create((set) => ({
   isCheckingAuth: true,
   message: null,
 
+  setUser: (user) => set({ user }),
   signup: async (name, email, password) => {
     set({ isLoading: true });
     try {
@@ -113,6 +114,24 @@ export const useAuthStore = create((set) => ({
     } catch (error) {
       set({ isLoading: false, error: error.message });
       throw error;
+    }
+  },
+  updateUser: async (userId, updatedUser) => {
+    try {
+      const res = await fetch(`${API_URL}/user/${userId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUser),
+      });
+
+      const data = await res.json();
+      if (!data.success) return { success: false, message: data.message };
+
+      set({ user: data.data });
+
+      return { success: true, message: "User updated", data: data.data };
+    } catch (error) {
+      return { success: false, message: error.message };
     }
   },
 }));

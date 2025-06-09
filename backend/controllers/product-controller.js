@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 
 import Product from "../models/products-model.js";
 
+import { categories } from "../../shared/constants/categories.js";
+
 export const getProducts = async (req, res) => {
   try {
     const products = await Product.find({});
@@ -29,13 +31,43 @@ export const getProductsById = async (req, res) => {
   }
 };
 
+export const getProductsByUserId = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const products = await Product.find({ userId });
+    res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    console.log(`Error fetching user products: ${error.message}`);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
 export const createProduct = async (req, res) => {
   const product = req.body;
 
-  if (!product.name || !product.desc || !product.price || !product.image) {
+  if (
+    !product.name ||
+    !product.category ||
+    !product.desc ||
+    !product.price ||
+    !product.image
+  ) {
     return res
       .status(400)
       .json({ success: false, message: "Please provide all fields" });
+  }
+
+  const allowedValues = categories.map((cat) => cat.value);
+
+  if (!allowedValues.includes(product.category)) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Invalid category selected." });
+  }
+
+  if (!product.userId) {
+    return res.status(400).json({ success: false, message: "Please login." });
   }
 
   const newProduct = new Product(product);
