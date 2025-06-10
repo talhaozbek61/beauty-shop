@@ -14,23 +14,10 @@ dotenv.config();
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
 
-const allowedOrigins = [
-  "http://localhost:5173", // dev
-  "https://beauty-shop-v0-2.onrender.com", // production
-];
-
 const app = express();
 
 app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      callback(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-  })
+  cors({ origin: "https://beauty-shop-v0-2.onrender.com", credentials: true })
 );
 app.use(express.json()); // allows us to accept JSON data in the req.body
 app.use(cookieParser()); // for parsing cookies

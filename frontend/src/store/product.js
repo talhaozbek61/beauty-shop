@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
-const API_URL = import.meta.env.API_URL || "http://localhost:3000/api";
+const API_URL =
+  "https://beauty-shop-v0-2.onrender.com/api" || "http://localhost:3000/api";
 
 import { categories } from "../../../shared/constants/categories";
 

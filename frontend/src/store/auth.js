@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
-const API_URL = import.meta.env.API_URL || "http://localhost:3000/api/auth";
+const API_URL =
+  "https://beauty-shop-v0-2.onrender.com/api" || "http://localhost:3000/api";
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -14,7 +15,7 @@ export const useAuthStore = create((set) => ({
   signup: async (name, email, password) => {
     set({ isLoading: true });
     try {
-      const response = await fetch(`${API_URL}/signup`, {
+      const response = await fetch(`${API_URL}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +49,7 @@ export const useAuthStore = create((set) => ({
   login: async (email, password) => {
     set({ isLoading: true });
     try {
-      const response = await fetch(`${API_URL}/login`, {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +83,7 @@ export const useAuthStore = create((set) => ({
   checkAuth: async () => {
     set({ isCheckingAuth: true });
     try {
-      const response = await fetch(`${API_URL}/check-auth`, {
+      const response = await fetch(`${API_URL}/auth/check-auth`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +104,7 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await fetch(`${API_URL}/logout`, {
+      const response = await fetch(`${API_URL}/auth/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +119,7 @@ export const useAuthStore = create((set) => ({
   },
   updateUser: async (userId, updatedUser) => {
     try {
-      const res = await fetch(`${API_URL}/user/${userId}`, {
+      const res = await fetch(`${API_URL}/auth/user/${userId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedUser),
