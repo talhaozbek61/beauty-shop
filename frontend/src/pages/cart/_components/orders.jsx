@@ -9,7 +9,7 @@ export default function Orders({
 }) {
   return (
     <div className="mx-auto max-w-2xl">
-      <h1 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h1 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-foreground">
         Shopping Cart
       </h1>
 
@@ -29,20 +29,18 @@ export default function Orders({
                   />
                 </div>
 
-                <div className="ml-4 flex flex-1 flex-col sm:ml-6">
+                <div className="ml-4 flex flex-1 flex-col sm:ml-6 dark:text-foreground">
                   <div>
                     <div className="flex justify-between">
                       <h4 className="text-sm">{item.name}</h4>
-                      <p className="ml-4 text-sm font-medium text-gray-900">
+                      <p className="ml-4 text-sm font-medium">
                         ${item.totalPrice}
                       </p>
                     </div>
-                    <p className="mt-1 text-sm text-gray-500">{item.color}</p>
-                    <p className="mt-1 text-sm text-gray-500">{item.size}</p>
                   </div>
 
                   <div className="mt-4 flex flex-1 items-end justify-between">
-                    <p className="flex items-center space-x-2 text-sm text-gray-700">
+                    <p className="flex items-center space-x-2 text-sm text-gray-700 dark:text-foreground">
                       <span>
                         {item.price}₺ x {item.quantity}
                       </span>
@@ -68,13 +66,15 @@ export default function Orders({
           <div>
             <dl className="space-y-4">
               <div className="flex items-center justify-between">
-                <dt className="text-base font-medium text-gray-900">Total</dt>
-                <dd className="ml-4 text-base font-medium text-gray-900">
+                <dt className="text-base font-medium text-gray-900 dark:text-foreground">
+                  Total
+                </dt>
+                <dd className="ml-4 text-base font-medium text-gray-900 dark:text-foreground">
                   ${totalPrice}
                 </dd>
               </div>
             </dl>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
               Shipping and taxes are included in the price.
             </p>
           </div>
@@ -82,14 +82,14 @@ export default function Orders({
           <div className="mt-10 flex max-sm:flex-col items-center gap-2">
             <Button
               type="button"
-              className="w-full rounded-md ring-1 ring-primary bg-foreground text-primary"
+              className="w-full rounded-md ring-1 ring-primary bg-foreground text-primary dark:bg-transparent dark:ring-foreground"
               onClick={handleDeleteAllCart}
             >
               Delete All Product
             </Button>
             <Button
               type="button"
-              className="w-full rounded-md bg-primary text-white"
+              className="w-full rounded-md bg-primary text-white dark:bg-foreground dark:text-primary"
               onClick={handleBuy}
             >
               Buy

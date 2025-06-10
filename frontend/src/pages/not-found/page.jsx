@@ -9,12 +9,12 @@ export default function Page() {
   useEffect(() => {
     setTimeout(() => {
       navigate("/");
-    }, 3000);
+    }, 1500);
   }, []);
 
   return (
     <Container>
-      <h1 className="text-2xl">Page Not Found</h1>
+      <h1 className="text-2xl dark:text-white">Page Not Found</h1>
     </Container>
   );
 }

@@ -93,7 +93,7 @@ export default function Page() {
         </div>
 
         {/* Product image */}
-        <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-start lg:max-w-lg relative">
+        <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-start lg:max-w-lg relative dark:text-foreground">
           <div className="flex items-center gap-1 text-sm font-medium max-lg:hidden">
             <Link href="/" className="flex items-center gap-1">
               <House className="size-3.5" />
@@ -109,7 +109,9 @@ export default function Page() {
 
           <section className="mt-4 space-y-4">
             <p className="text-lg sm:text-xl">${product?.price}</p>
-            <p className="text-base text-gray-400">{product?.desc}</p>
+            <p className="text-base text-gray-400 dark:text-gray-200">
+              {product?.desc}
+            </p>
           </section>
           {user ? (
             user?._id === product.userId ? (
@@ -123,7 +125,7 @@ export default function Page() {
                 </Button>
 
                 <Button
-                  className="rounded-md text-xs text-foreground font-semibold w-full bg-primary flex justify-center items-center gap-1.5"
+                  className="rounded-md text-xs text-foreground font-semibold w-full bg-primary dark:bg-foreground dark:text-gray-900 flex justify-center items-center gap-1.5"
                   onClick={handleDelete}
                 >
                   <Trash className="size-4" />
@@ -131,7 +133,7 @@ export default function Page() {
                 </Button>
 
                 <Button
-                  className="sm:col-span-2 rounded-md text-xs font-semibold w-full ring-1 ring-gray-300 ring-inset hover:bg-gray-50 flex justify-center items-center gap-1.5"
+                  className="sm:col-span-2 rounded-md text-xs font-semibold w-full ring-1 ring-gray-300 ring-inset hover:bg-gray-50 dark:text-gray-900 flex justify-center items-center gap-1.5"
                   disabled={true}
                 >
                   <Lock className="size-4" />
@@ -232,7 +234,7 @@ export default function Page() {
           {/* Modal Buttons */}
           <div className="flex items-center gap-6">
             <Button
-              className="bg-transparent ring-1 ring-foreground text-foreground w-full"
+              className="bg-transparent ring-1 ring-foreground text-foreground dark:hover:text-foreground w-full"
               onClick={() => setIsOpen(false)}
               type="button"
             >
@@ -241,7 +243,7 @@ export default function Page() {
 
             <Button
               type="submit"
-              className="bg-foreground text-primary w-full"
+              className="bg-foreground text-primary dark:text-gray-900 w-full"
               onClick={() => setIsOpen(false)}
             >
               Update

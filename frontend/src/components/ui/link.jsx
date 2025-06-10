@@ -6,7 +6,7 @@ export default function Link({ href, className, children }) {
     <RouterLink
       to={href}
       className={twMerge(
-        "text-sm tracking-wide font-medium text-gray-900 hover:text-primary hover:dark:text-gray-400 duration-300 outline-none",
+        "text-sm tracking-wide font-medium text-gray-900 dark:text-foreground dark:hover:text-gray-200 hover:text-primary duration-300 outline-none",
         className
       )}
     >

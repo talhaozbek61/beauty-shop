@@ -46,10 +46,10 @@ export default function Page() {
     <Container className="lg:max-w-sm space-y-6 px-4">
       <Toaster position="bottom-center" />
 
-      <h1 className="text-2xl font-semibold mb-6 text-center text-primary">
+      <h1 className="text-2xl font-semibold mb-6 text-center text-primary dark:text-foreground">
         Sign Up
       </h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 dark:text-foreground">
         {/* Name Input */}
         <Input
           name="name"
@@ -98,7 +98,7 @@ export default function Page() {
 
         <Button
           type="submit"
-          className="bg-primary dark:bg-gray-700 text-white w-full rounded-md"
+          className="bg-primary dark:bg-transparent dark:ring-1 dark:ring-foreground text-white w-full rounded-md"
           disabled={isLoading}
         >
           {isLoading ? (

@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <footer>
+    <footer className="dark:bg-primary dark:text-foreground">
       <div className="mx-auto max-w-2xl lg:max-w-7xl py-12 flex max-sm:flex-col-reverse max-sm:gap-4 items-center justify-between px-6 xl:px-0">
         <p className="text-center text-sm/6">
           &copy; 2024 Beauty Shop, Inc. All rights reserved.

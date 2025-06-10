@@ -33,7 +33,9 @@ export default function ProductList({ product }) {
             <span aria-hidden="true" className="absolute inset-0" />
             {product?.name}
           </Link>
-          <p className="text-sm font-medium">${product?.price}</p>
+          <p className="text-sm font-medium dark:text-foreground">
+            ${product?.price}
+          </p>
         </div>
       </div>
 

@@ -11,7 +11,7 @@ export default function Button({
     <button
       type={type}
       className={twMerge(
-        "px-4 py-2.5 rounded-full text-base/5 font-medium duration-300 outline-none",
+        "px-4 py-2.5 rounded-full text-base/5 font-medium duration-300 outline-none dark:text-foreground dark:hover:text-gray-900",
         disabled
           ? "hover:scale-none bg-gray-50 cursor-not-allowed"
           : "hover:scale-95 cursor-pointer",

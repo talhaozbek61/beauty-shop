@@ -62,7 +62,7 @@ export default function Page() {
           <p>We hope you enjoy your product!</p>
         </div>
       ) : cart.length === 0 ? (
-        <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
+        <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-foreground">
           Shopping Cart Empty
         </h2>
       ) : (

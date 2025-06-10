@@ -35,7 +35,9 @@ export default function Page() {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center gap-2">
-          <p className="text-red-400">Products not found</p>
+          <p className="text-red-400 dark:text-foreground">
+            Products not found
+          </p>
           <Link href="/create">Create Product</Link>
         </div>
       )}

@@ -40,12 +40,12 @@ export default function LoginPage() {
       <Toaster position="bottom-center" />
 
       {/* Header */}
-      <h1 className="text-2xl font-semibold mb-6 text-center text-primary">
+      <h1 className="text-2xl font-semibold mb-6 text-center text-primary dark:text-foreground">
         Login
       </h1>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 dark:text-foreground">
         {/* Email Input */}
         <Input
           name="email"
@@ -75,11 +75,13 @@ export default function LoginPage() {
         </Input>
 
         {/* fetch error  */}
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {error && (
+          <p className="text-red-500 dark:text-foreground text-sm">{error}</p>
+        )}
 
         <Button
           type="submit"
-          className="bg-primary dark:bg-gray-700 text-white w-full rounded-md"
+          className="bg-primary dark:bg-transparent dark:ring-1 dark:ring-foreground text-white w-full rounded-md"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -93,7 +95,7 @@ export default function LoginPage() {
         </Button>
 
         {/* Not Account */}
-        <p className="text-gray-400 text-sm flex items-center gap-1">
+        <p className="text-gray-400 dark:text-gray-200 text-sm flex items-center gap-1">
           Have an account?
           <Link href="/signup">Sign up</Link>
         </p>

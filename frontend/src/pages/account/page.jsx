@@ -31,7 +31,9 @@ export default function Page() {
       {products.length > 0 ? (
         <div className="py-12">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold tracking-tight">Your Products</h1>
+            <h1 className="text-2xl font-bold tracking-tight dark:text-foreground">
+              Your Products
+            </h1>
             <Link
               href="/create"
               className="rounded-md text-xs font-semibold px-4 py-2.5 ring-1 ring-gray-300 ring-inset hover:bg-primary hover:text-foreground hover:ring-0 duration-300 flex items-center gap-1.5"

@@ -52,11 +52,11 @@ export default function Page() {
   };
 
   return (
-    <Container className="lg:max-w-lg space-y-6 px-4">
+    <Container className="lg:max-w-lg space-y-6 px-4 dark:text-foreground">
       <Toaster position="bottom-center" />
 
       {/* Header */}
-      <h1 className="text-2xl font-semibold mb-6 text-center text-primary">
+      <h1 className="text-2xl font-semibold mb-6 text-center text-primary dark:text-foreground">
         Create New Product
       </h1>
 
@@ -129,7 +129,7 @@ export default function Page() {
         {/* Send Button */}
         <Button
           type="submit"
-          className="bg-primary dark:bg-gray-700 text-white w-full rounded-md"
+          className="bg-primary dark:bg-foreground dark:text-gray-900 text-white w-full rounded-md"
         >
           Send
         </Button>

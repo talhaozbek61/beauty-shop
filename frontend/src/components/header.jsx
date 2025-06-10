@@ -6,15 +6,15 @@ import { categories } from "../../../shared/constants/categories";
 
 export default function Header() {
   return (
-    <nav className="bg-transparent pt-6 pb-4 px-6 lg:px-8">
+    <nav className="bg-transparent pt-6 pb-4 px-6 lg:px-8 dark:bg-primary">
       <div className="mx-auto max-w-2xl lg:max-w-7xl flex items-center justify-between">
         {/* Icon */}
         <Link
           href="/"
-          className="text-primary tracking-wide font-medium text-2xl flex flex-col group"
+          className="text-primary dark:text-foreground tracking-wide font-medium text-2xl flex flex-col group"
         >
           beauty
-          <span className="text-xs ml-auto translate-x-6 bg-primary text-foreground py-0.5 px-1.5 rounded-full group-hover:translate-x-8 duration-300">
+          <span className="text-xs ml-auto translate-x-6 bg-primary dark:bg-foreground dark:text-primary text-foreground py-0.5 px-1.5 rounded-full group-hover:translate-x-8 duration-300">
             shop
           </span>
         </Link>

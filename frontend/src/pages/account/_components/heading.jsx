@@ -24,7 +24,7 @@ export default function Heading({ user, updateUser, onClick }) {
       <Toaster position="bottom-center" />
 
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight truncate">
+        <h2 className="text-2xl/7 font-bold text-gray-900 dark:text-foreground sm:truncate sm:text-3xl sm:tracking-tight truncate">
           Welcome {user?.name}
         </h2>
         <div className="flex gap-2">
@@ -84,7 +84,7 @@ export default function Heading({ user, updateUser, onClick }) {
           <div className="flex items-center gap-6">
             <Button
               type="button"
-              className="bg-transparent ring-1 ring-foreground text-foreground w-full"
+              className="bg-transparent ring-1 ring-foreground text-foreground dark:hover:text-foreground w-full"
               onClick={() => setIsOpen(false)}
             >
               Cancel
@@ -92,7 +92,7 @@ export default function Heading({ user, updateUser, onClick }) {
 
             <Button
               type="submit"
-              className="bg-foreground text-primary w-full"
+              className="bg-foreground text-primary dark:text-gray-900 w-full"
               onClick={() => setIsOpen(false)}
             >
               Update
