@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = import.meta.env.API_URL || "http://localhost:3000/api";
 
 import { categories } from "../../../shared/constants/categories";
 

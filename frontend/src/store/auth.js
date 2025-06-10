@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const API_URL = "http://localhost:3000/api/auth";
+const API_URL = import.meta.env.API_URL || "http://localhost:3000/api/auth";
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -97,7 +97,7 @@ export const useAuthStore = create((set) => ({
       }
     } catch (error) {
       set({ isCheckingAuth: false, isAuthenticated: false, user: null });
-      console.log(error);
+      // console.log(error);
     }
   },
   logout: async () => {
@@ -135,9 +135,3 @@ export const useAuthStore = create((set) => ({
     }
   },
 }));
-// update the ui immediately, without needing a refresh
-// set((state) => ({
-//   products: state.products.map((product) =>
-//     product._id === pid ? data.data : product
-//   ),
-// }));

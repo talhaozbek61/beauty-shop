@@ -151,7 +151,7 @@ export default function Page() {
             )
           ) : (
             <Button
-              className="rounded-md text-xs font-semibold w-full ring-1 ring-gray-300 ring-inset hover:bg-gray-50 flex justify-center items-center gap-1.5 mt-4"
+              className="rounded-md text-xs font-semibold w-full ring-1 ring-gray-300 ring-inset hover:bg-gray-50 dark:text-gray-900 flex justify-center items-center gap-1.5 mt-4"
               disabled={true}
             >
               <ShoppingBag className="size-4" />

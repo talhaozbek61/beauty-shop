@@ -57,7 +57,9 @@ export default function Page() {
 
       {showThanks ? (
         <div className="mx-auto max-w-2xl flex flex-col space-y-4 text-xl text-center">
-          <h3 className="text-2xl font-semibold text-primary">Thank you!</h3>
+          <h3 className="text-2xl font-semibold text-primary dark:text-foreground">
+            Thank you!
+          </h3>
           <h2>Your purchase has been completed.</h2>
           <p>We hope you enjoy your product!</p>
         </div>

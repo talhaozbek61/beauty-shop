@@ -14,7 +14,7 @@ export default function Cta() {
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
             href="/create"
-            className="rounded-md bg-white px-3.5 py-2.5 text-gray-900 dark:text-gray-900 shadow-sm hover:scale-90"
+            className="rounded-md bg-white px-3.5 py-2.5 text-gray-900 dark:text-gray-900 dark:hover:text-gray-900 shadow-sm hover:scale-90"
           >
             Start Adding Products
           </Link>
