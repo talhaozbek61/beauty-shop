@@ -34,9 +34,12 @@ export default function Header() {
 
       {/* Categories */}
       <ul className="mx-auto max-w-2xl lg:max-w-7xl flex items-center max-sm:space-x-8 sm:justify-between py-4 overflow-x-scroll mt-4 border-t border-gray-200">
+        <li className="shrink-0">
+          <Link href={`/?category=all`}>All Products</Link>
+        </li>
         {categories.map((category) => (
           <li key={category.name} className="shrink-0">
-            <Link href={category.href}>{category.name}</Link>
+            <Link href={`/?category=${category.value}`}>{category.name}</Link>
           </li>
         ))}
       </ul>

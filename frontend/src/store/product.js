@@ -58,7 +58,6 @@ export const useProductStore = create((set) => ({
       method: "GET",
     });
     const data = await res.json();
-    console.log(data);
 
     if (!data.success) return { success: false, message: data.message };
     set({ products: data.data });
