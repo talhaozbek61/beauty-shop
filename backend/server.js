@@ -7,6 +7,7 @@ import { connectDB } from "./config/db-connect.js";
 
 import productsRouter from "./router/products.js";
 import authRouter from "./router/auth.js";
+import cartRouter from "./router/cart.js";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -20,6 +21,7 @@ app.use(cookieParser()); // for parsing cookies
 
 app.use("/api/products", productsRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/cart", cartRouter);
 
 app.listen(PORT, () => {
   connectDB(MONGO_URI);

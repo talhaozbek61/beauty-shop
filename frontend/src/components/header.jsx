@@ -1,4 +1,4 @@
-import { User, Heart, ShoppingBag, Search } from "lucide-react";
+import { User, ShoppingBag } from "lucide-react";
 
 import Link from "./ui/link";
 
@@ -19,19 +19,6 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Search */}
-        <div className="max-lg:hidden flex items-center rounded-md bg-gray-50/50 pl-3 outline-none ring-1 ring-gray-200 focus:ring-primary focus-within:ring-primary">
-          <Search className="size-4 stroke-primary" />
-          <input
-            type="text"
-            name="search"
-            id="search"
-            className="block min-w-96 grow py-1.5 pr-3 pl-1 text-base text-gray-700 placeholder:text-primary focus-within:placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-            placeholder="Find beauty"
-            required=""
-          />
-        </div>
-
         {/* Page Links */}
         <ul className="flex item-center md:gap-8 gap-4">
           {links.map((link) => (
@@ -43,19 +30,6 @@ export default function Header() {
             </li>
           ))}
         </ul>
-      </div>
-
-      {/* Mobile Search */}
-      <div className="lg:hidden mx-auto max-w-2xl flex items-center rounded-md bg-gray-50/50 pl-3 outline-none ring-1 ring-gray-200 focus:ring-primary focus-within:ring-primary mt-4">
-        <Search className="size-4 stroke-primary" />
-        <input
-          type="text"
-          name="search"
-          id="mobile-search"
-          className="block grow py-1.5 pr-3 pl-1 text-base text-gray-700 placeholder:text-primary focus-within:placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-          placeholder="Find beauty"
-          required=""
-        />
       </div>
 
       {/* Categories */}
@@ -75,11 +49,6 @@ const links = [
     name: "My Account",
     href: "/account",
     icon: User,
-  },
-  {
-    name: "Favorites",
-    href: "/favorites",
-    icon: Heart,
   },
   {
     name: "Cart",

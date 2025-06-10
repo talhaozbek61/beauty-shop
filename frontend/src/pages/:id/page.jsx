@@ -4,6 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { House, Pencil, Lock, Trash, ShoppingBag } from "lucide-react";
 
 import { useProductStore } from "../../store/product";
+import { useAuthStore } from "../../store/auth";
+import { useCartStore } from "../../store/cart";
+
+import { categories } from "../../../../shared/constants/categories";
 
 import Container from "../../components/ui/container";
 import Link from "../../components/ui/link";
@@ -11,15 +15,15 @@ import Button from "../../components/ui/button";
 import Modal from "../home/_components/modal";
 import Input from "../../components/ui/input";
 import SelectMenu from "../../components/ui/select-menu";
-import { categories } from "../../../../shared/constants/categories";
 import Textarea from "../../components/ui/textarea";
+
 import { toast, Toaster } from "sonner";
-import { useAuthStore } from "../../store/auth";
 
 export default function Page() {
   const { fetchProductById, product, updateProduct, deleteProduct } =
     useProductStore();
   const { user } = useAuthStore();
+  const { addToCart } = useCartStore();
 
   const [isOpen, setIsOpen] = useState(false);
   const [updatedProduct, setUpdatedProduct] = useState(product);
@@ -55,6 +59,13 @@ export default function Page() {
     }
   };
 
+  // Added Cart
+  const handleCart = async () => {
+    const { success, message } = await addToCart(user?._id, product?._id);
+    if (!success) toast.error(message);
+    else toast.success(message);
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       const res = await fetchProductById(id);
@@ -82,7 +93,7 @@ export default function Page() {
         </div>
 
         {/* Product image */}
-        <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-start lg:max-w-lg">
+        <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-start lg:max-w-lg relative">
           <div className="flex items-center gap-1 text-sm font-medium max-lg:hidden">
             <Link href="/" className="flex items-center gap-1">
               <House className="size-3.5" />
@@ -91,6 +102,7 @@ export default function Page() {
             <span>/</span>
             <span className="truncate">{product?.name}</span>
           </div>
+
           <h1 className="mt-10 text-2xl font-bold tracking-tight sm:text-3xl">
             {product?.name}
           </h1>
@@ -127,7 +139,10 @@ export default function Page() {
                 </Button>
               </div>
             ) : (
-              <Button className="rounded-md text-xs font-semibold w-full ring-1 ring-gray-300 ring-inset hover:bg-gray-50 flex justify-center items-center gap-1.5 mt-4">
+              <Button
+                className="rounded-md text-xs font-semibold w-full ring-1 ring-gray-300 ring-inset hover:bg-gray-50 flex justify-center items-center gap-1.5 mt-4"
+                onClick={handleCart}
+              >
                 <ShoppingBag className="size-4" />
                 Add Cart
               </Button>

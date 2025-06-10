@@ -14,6 +14,7 @@ import LoginPage from "./pages/login/page";
 import SignUpPage from "./pages/signup/page";
 import AccountPage from "./pages/account/page";
 import CreatePage from "./pages/create/page";
+import CartPage from "./pages/cart/page";
 import ProductPage from "./pages/:id/page";
 import NotFoundPage from "./pages/not-found/page";
 
@@ -90,6 +91,14 @@ export default function App() {
           element={
             <ProtectRoute>
               <CreatePage />
+            </ProtectRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <ProtectRoute>
+              <CartPage />
             </ProtectRoute>
           }
         />
